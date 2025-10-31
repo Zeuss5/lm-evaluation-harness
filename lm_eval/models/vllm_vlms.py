@@ -22,10 +22,12 @@ eval_logger = logging.getLogger(__name__)
 
 
 try:
+    import vllm
     import ray
     from vllm import LLM, SamplingParams
     from vllm.lora.request import LoRARequest  # noqa: F401
     from vllm.transformers_utils.tokenizer import get_tokenizer  # noqa: F401
+    vllm.plugins.load_general_plugins()
 except ModuleNotFoundError:
     pass
 
